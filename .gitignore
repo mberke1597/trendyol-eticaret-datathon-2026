@@ -1,0 +1,30 @@
+# Büyük veri / cache / model / çıktı klasörleri (GitHub'a yüklenmeyecek)
+cache/
+cache_smoke/
+data_smoke/
+work_smoke/
+models/
+output/
+submissions/
+catboost_info/
+trendyol-e-ticaret-yarismasi-2026-kaggle/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Büyük binary dosyalar
+*.npy
+*.npz
+*.parquet
+*.cbm
+*.txt.model
+*.pt
+*.bin
+*.rar
+*.zip
+
+# OS / editor
+.DS_Store
+.claude/

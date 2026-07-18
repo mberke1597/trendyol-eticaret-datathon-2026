@@ -1,0 +1,53 @@
+Önemli Notlar
+Tüm ürün (item_id) ve arama terimleri (term_id) anonimleştirilmiş formattadır. Hashler içerik veya sıralama hakkında hiçbir bilgi taşımaz.
+training_pairs.csv yalnızca pozitif (relevant, label = 1) çiftler içerir. Tahmin edilmesi gereken test verisinde negatif çiftler de bulunmaktadır. Yarışmacılar eğitimde negatif örnek kullanmak istedikleri takdirde kendileri üretmelidir.
+gender, age_group gibi bazı kolonlarda unknown veya boş değerler bulunabilir.
+
+
+Dosyalar:
+
+
+items.csv
+Açıklama: Ürün kataloğu.
+
+Kolon Adı	Veri Tipi	Açıklama
+item_id	string	Hash tabanlı ürün kimliği (örn. ITEM_7d18e2e51ef1)
+title	string	Ürün başlığı
+category	string	Ürün kategori zinciri (örn. ayakkabı/spor ayakkabı/sneaker)
+brand	string	Ürünün markası
+gender	string	Ürüne tanımlı cinsiyet etiketi (kadın, erkek, unisex, unknown)
+age_group	string	Ürüne tanımlı yaş grubu (yetişkin, çocuk, bebek, unknown)
+attributes	string	anahtar: değer, ... formatında ürün özellikleri.
+
+
+terms.csv
+Açıklama: Arama terimi kataloğu.
+
+Kolon Adı	Veri Tipi	Açıklama
+term_id	string	Hash tabanlı arama terimi kimliği (örn. TERM_ccfefd8a)
+query	string	Arama terim metni
+
+
+training_pairs.csv
+Açıklama: Eğitim için kullanılabilecek hazır pozitif terim-ürün çiftleri.
+
+Kolon Adı	Veri Tipi	Açıklama
+id	string	Çift kimliği (örn. TRN_23f5d7fbae)
+term_id	string	terms.csv'ye referans
+item_id	string	items.csv'ye referans
+label	int64	Her zaman 1 (relevant)
+
+
+submission_pairs.csv
+Açıklama: Tahmin yapılacak test terim-ürün çiftleri.
+
+Kolon Adı	Veri Tipi	Açıklama
+id	string	Çift kimliği (örn. TST_a8a83d59d73cce) — submission'da bu hashler kullanılmalıdır
+term_id	string	terms.csv'ye referans
+item_id	string	items.csv'ye referans
+sample_submission.csv
+Açıklama: Örnek submission dosyası (temsilen tüm tahminler 0).
+
+Kolon Adı	Veri Tipi	Açıklama
+id	string	submission_pairs.csv'deki her çift için hash
+prediction	int64	Tahmin (Örnek dosyada tümü 0)

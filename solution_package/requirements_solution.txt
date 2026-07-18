@@ -1,0 +1,13 @@
+# Trendyol2026 çözüm ortamı (python=3.10, conda env: ty2026)
+numpy==1.26.4
+pandas==2.2.2
+pyarrow==16.1.0
+scikit-learn==1.5.1
+lightgbm==4.5.0
+xgboost==2.1.1
+catboost==1.2.5
+faiss-cpu==1.8.0
+sentence-transformers==3.4.1
+transformers==4.51.3
+huggingface_hub>=0.23
+torch>=2.2

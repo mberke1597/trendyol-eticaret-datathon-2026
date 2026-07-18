@@ -1,0 +1,14 @@
+# Pinned so the Trendyol/TY-ecomm-embed custom remote-code model (trust_remote_code,
+# RoPE-based "NewModel" arch pinned to transformers==4.48.1 internals) loads correctly.
+# transformers>=5 breaks its rotary-embedding cache (IndexError in modeling.py).
+transformers==4.51.3
+sentence-transformers>=5.0,<6
+torch>=2.0
+faiss-cpu>=1.8       # swap for faiss-gpu on Kaggle if you want GPU ANN mining
+scikit-learn>=1.5
+lightgbm>=4.5
+xgboost>=2.1
+catboost>=1.2
+pandas>=2.2
+numpy>=1.26,<2.0
+pyarrow>=17

@@ -1,0 +1,50 @@
+# Pin transformers<5: TY-ecomm-embed's trust_remote_code implementation
+# (Alibaba-NLP/new-impl) has NOT been updated for transformers v5 -- confirmed
+# by the sentence-transformers maintainer (huggingface/sentence-transformers
+# issue #3717). CRITICAL: sentence-transformers>=5 requires transformers>=5
+# internally, so pinning transformers==4.51.3 alongside sentence-transformers>=5
+# is a self-contradiction pip may silently "resolve" by upgrading transformers
+# past the pin. Must use a sentence-transformers 3.x line, NOT 5.x.
+# numpy/scipy/pandas/scikit-learn deliberately NOT pinned/listed here: Kaggle's
+# base image already ships mutually-compatible versions of these. Letting pip
+# "resolve" them again alongside everything else risks an ABI-inconsistent
+# numpy/scipy pair (real failure seen 2026-07-03: `ImportError: cannot import
+# name '_center' from 'numpy._core.umath'`, triggered by installing this file
+# on top of Kaggle's preinstalled stack). If a script errors on a missing one
+# of these, install it alone, not as part of this file.
+transformers==4.51.3
+sentence-transformers==3.4.1
+torch
+# faiss-cpu unconditionally, NOT faiss-gpu-cu12 (2026-07-08 real Kaggle failure):
+# 03_negative_sampling.py only ever uses faiss.IndexFlatIP/IndexIVFPQ (CPU
+# index classes -- no faiss.StandardGpuResources(), no index_cpu_to_gpu
+# anywhere in this codebase), so GPU FAISS buys nothing here. On a real
+# Kaggle run, faiss-gpu-cu12 produced a binary/SWIG mismatch:
+# `AttributeError: module 'faiss._swigfaiss' has no attribute
+# 'delete_GpuResourcesVector'` -- the compiled extension and the generated
+# Python wrapper disagreed, most likely from this wheel not matching Kaggle's
+# exact CUDA runtime, or from colliding with a `pip install faiss-cpu` run
+# separately in the same session (both packages install into the same
+# `faiss/` namespace and can partially overwrite each other's files).
+# faiss-cpu is simpler and was never the bottleneck: negative sampling runs
+# once per session on a catalog-sized index, not per training row.
+faiss-cpu
+lightgbm
+xgboost
+catboost
+pyarrow
+shap
+pytest
+
+# NOT installed by default -- only needed for hpo_search.py (optional hyperparameter
+# search, see that file's docstring). 05_train.py runs fine without it (falls back
+# to its proven hardcoded hyperparameters if models/best_hyperparams.json doesn't
+# exist). Install with: pip install optuna
+# optuna
+
+# NOT installed by default -- only needed if config.USE_TURKISH_MORPHOLOGY=1
+# (turkish_morphology.py + typo_tolerance.py, see features.py's LexicalIndex
+# docstring). features.py/04_build_features.py run fine without these installed
+# as long as the flag stays off (the default). NOT yet validated against a real
+# Kaggle submission -- see New-Pipeline/DESIGN.md. Install with:
+# pip install zeyrek symspellpy

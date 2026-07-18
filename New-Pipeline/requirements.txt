@@ -1,0 +1,15 @@
+# Verified installable and working in a fresh sandbox 2026-07-07 (no GPU needed
+# for this part of the pipeline -- pure CPU text processing).
+zeyrek
+symspellpy
+
+# OPTIONAL upgrade path, NOT required by default (see turkish_morphology.py's
+# "Full Zemberek-NLP" section). Only needed if USE_FULL_ZEMBEREK=1.
+# jpype1
+# -- plus manually downloading zemberek-full.jar from
+#    https://github.com/ahmetaa/zemberek-nlp/releases and setting
+#    ZEMBEREK_JAR_PATH to its path. Untested end-to-end in the dev sandbox
+#    (network allowlist blocked the download there) -- Kaggle has full
+#    internet access so this should work there, but verify before trusting it.
+
+pytest
