@@ -25,7 +25,6 @@ uçtan uca bir arama-alaka pipeline'ı.
 | 📈 **En yüksek çıkılan sıra** | **34.** |
 | 📏 **Metrik** | Macro-averaged F1 (0 ve 1 sınıfının F1'inin eşit ağırlıklı ortalaması) |
 | ⏱️ **Süre** | 3 hafta |
-| 🧩 **Düzeltici katmanın LB katkısı** | 0.894 → 0.904 |
 
 ---
 
