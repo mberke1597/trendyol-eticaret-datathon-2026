@@ -139,7 +139,7 @@ subset'e göre belirlendi.
 
 ## 👥 Takım
 
-3 kişilik bir takımla, 3 haftalık yoğun bir sürecin sonunda 57. sırada bitirdik — yol boyunca
+4 kişilik bir takımla, 3 haftalık yoğun bir sürecin sonunda 57. sırada bitirdik — yol boyunca
 34. sıraya kadar da yükseldik. Gecelerce süren denemeler, sürekli hipotez testi ve her adımı
 gerçek leaderboard'da doğrulama disipliniyle ilerledik.
 
